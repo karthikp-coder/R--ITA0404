@@ -1,0 +1,17 @@
+heights <- factor(c("Tall","Short","Medium","Tall","Short"))
+print(heights)
+print(levels(heights))
+
+letters_sample <- factor(sample(LETTERS, 5))
+print(letters_sample)
+print(levels(letters_sample))
+
+Output:
+
+[1] Tall   Short  Medium Tall   Short
+Levels: Medium Short Tall
+
+[1] "Medium" "Short" "Tall"
+
+[1] A K M R Z
+Levels: A K M R Z
