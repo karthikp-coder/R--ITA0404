@@ -1,0 +1,21 @@
+num <- c(10, 20, 30, 40, 50)
+char <- c("Apple", "Banana", "Mango")
+logical <- c(TRUE, FALSE, TRUE, TRUE)
+
+print(num)
+print(char)
+print(logical)
+
+print(typeof(num))
+print(typeof(char))
+print(typeof(logical))
+
+Output:
+
+[1] 10 20 30 40 50
+[1] "Apple" "Banana" "Mango"
+[1] TRUE FALSE TRUE TRUE
+
+[1] "double"
+[1] "character"
+[1] "logical"
