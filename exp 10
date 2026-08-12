@@ -1,0 +1,82 @@
+exam_data <- data.frame(
+  name=c("Anu","Bala","Cathy","David","Eva"),
+  score=c(85,72,90,65,78),
+  attempts=c(1,2,1,3,2),
+  qualify=c(TRUE,TRUE,TRUE,FALSE,TRUE)
+)
+
+print(exam_data)
+
+print(exam_data[1,])
+print(exam_data[,c("name","score")])
+
+exam_data$grade <- c("A","B","A","C","B")
+print(exam_data)
+
+exam_data <- rbind(exam_data,
+                   data.frame(name="Frank",score=88,
+                              attempts=1,qualify=TRUE,
+                              grade="A"))
+print(exam_data)
+
+exam_data <- cbind(exam_data,
+                   result=c("Pass","Pass","Pass","Fail","Pass","Pass"))
+print(exam_data)
+
+sorted_data <- exam_data[order(exam_data$score),]
+print(sorted_data)
+
+write.csv(exam_data, "exam_data.csv", row.names=FALSE)
+print("Data saved successfully")
+
+Output:
+
+   name score attempts qualify
+1   Anu    85        1    TRUE
+2  Bala    72        2    TRUE
+3 Cathy    90        1    TRUE
+4 David    65        3   FALSE
+5   Eva    78        2    TRUE
+
+  name score attempts qualify
+1  Anu    85        1    TRUE
+
+   name score
+1   Anu    85
+2  Bala    72
+3 Cathy    90
+4 David    65
+5   Eva    78
+
+   name score attempts qualify grade
+1   Anu    85        1    TRUE     A
+2  Bala    72        2    TRUE     B
+3 Cathy    90        1    TRUE     A
+4 David    65        3   FALSE     C
+5   Eva    78        2    TRUE     B
+
+   name score attempts qualify grade
+1   Anu    85        1    TRUE     A
+2  Bala    72        2    TRUE     B
+3 Cathy    90        1    TRUE     A
+4 David    65        3   FALSE     C
+5   Eva    78        2    TRUE     B
+6 Frank    88        1    TRUE     A
+
+   name score attempts qualify grade result
+1   Anu    85        1    TRUE     A   Pass
+2  Bala    72        2    TRUE     B   Pass
+3 Cathy    90        1    TRUE     A   Pass
+4 David    65        3   FALSE     C   Fail
+5   Eva    78        2    TRUE     B   Pass
+6 Frank    88        1    TRUE     A   Pass
+
+   name score attempts qualify grade result
+4 David    65        3   FALSE     C   Fail
+2  Bala    72        2    TRUE     B   Pass
+5   Eva    78        2    TRUE     B   Pass
+1   Anu    85        1    TRUE     A   Pass
+6 Frank    88        1    TRUE     A   Pass
+3 Cathy    90        1    TRUE     A   Pass
+
+[1] "Data saved successfully"
