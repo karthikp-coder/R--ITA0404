@@ -1,0 +1,50 @@
+# Load data
+data(USArrests)
+# Summary statistics
+summary(USArrests)
+# State with largest Rape arrests
+state_rape <- rownames(USArrests)[which.max(USArrests$Rape)]
+print(state_rape)
+# Maximum and minimum Murder
+max_murder <- max(USArrests$Murder)
+min_murder <- min(USArrests$Murder)
+print(max_murder)
+print(min_murder)
+# Correlation
+print(cor(USArrests))
+# States above median Assault
+median_assault <- median(USArrests$Assault)
+print(rownames(USArrests)[USArrests$Assault > median_assault])
+# Bottom 25% Murder
+q25 <- quantile(USArrests$Murder, 0.25)
+print(rownames(USArrests)[USArrests$Murder <= q25])
+# Histogram
+hist(USArrests$Murder, main="Murder Rate", xlab="Murder")
+# Density plot
+plot(density(USArrests$Murder), main="Murder Density")
+# Scatter plot
+plot(USArrests$Murder, USArrests$Assault,
+     main="Murder vs Assault",
+     xlab="Murder", ylab="Assault")
+# Bar graph
+barplot(USArrests$Murder[1:10],
+        names.arg=rownames(USArrests)[1:10],
+        las=2, main="Murder Rates")
+
+        
+Sample Results
+
+Largest Rape arrests:
+Nevada
+Maximum Murder:
+17.4
+
+Minimum Murder:
+0.8
+
+Correlation:
+          Murder Assault UrbanPop  Rape
+Murder     1.000   0.802    0.070 0.564
+Assault    0.802   1.000    0.259 0.666
+UrbanPop   0.070   0.259    1.000 0.411
+Rape       0.564   0.666    0.411 1.000
