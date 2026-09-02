@@ -1,0 +1,21 @@
+# Read CSV file
+data <- read.csv("student.csv")
+# Display contents
+print(data)
+
+
+
+
+Sample student.csv
+Name,Age,Marks
+Arun,20,85
+Bala,21,90
+Kavi,20,78
+
+
+
+Sample Output
+  Name Age Marks
+1 Arun  20    85
+2 Bala  21    90
+3 Kavi  20    78
