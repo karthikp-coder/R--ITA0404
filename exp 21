@@ -1,0 +1,40 @@
+# Load data
+data(iris)
+# Convert Species to binary
+iris$Species2 <- ifelse(
+  iris$Species == "setosa",
+  "Setosa",
+  "Other"
+)
+iris$Species2 <- factor(iris$Species2)
+# Random split 80/20
+set.seed(123)
+n <- nrow(iris)
+train_index <- sample(1:n, 0.8*n)
+train <- iris[train_index, ]
+test <- iris[-train_index, ]
+# Logistic regression
+model <- glm(
+  Species2 ~ Petal.Length + Petal.Width,
+  data=train,
+  family=binomial
+)
+# Predict
+prob <- predict(model, test, type="response")
+pred <- ifelse(prob > 0.5, "Other", "Setosa")
+pred <- factor(pred, levels=levels(test$Species2))
+# Confusion matrix
+table(Actual=test$Species2,
+      Predicted=pred)
+# Accuracy
+accuracy <- mean(pred == test$Species2)
+print(accuracy)
+
+
+Sample Output
+        Predicted
+Actual   Setosa Other
+Setosa      10     0
+Other        0    20
+Accuracy:
+1
