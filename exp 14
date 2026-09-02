@@ -1,0 +1,32 @@
+# Load dataset
+data(ChickWeight)
+# Sort by weight
+sorted <- ChickWeight[order(ChickWeight$weight), ]
+print(head(sorted))
+# Melt data
+library(reshape2)
+m <- melt(ChickWeight,
+          id.vars = c("Chick", "Time", "Diet"))
+print(head(m))
+# Cast by Diet
+result <- dcast(m, Diet ~ variable, mean)
+print(result)
+
+
+
+Sample Output
+Sorted data:
+   weight Time Chick Diet
+1     35    0     1    1
+2     36    0    18    1
+3     39    0    16    1
+4     39    0    15    1
+5     41    0    13    1
+6     42    0     8    1
+
+Cast result:
+  Diet   weight
+1    1 102.6458
+2    2 122.6167
+3    3 142.9500
+4    4 135.2625
