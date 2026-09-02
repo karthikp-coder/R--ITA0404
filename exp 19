@@ -1,0 +1,17 @@
+# Read data
+data <- read.csv("advertising.csv")
+# Create regression model
+model <- lm(Sales ~ Spend, data=data)
+# Display model
+summary(model)
+# Predict Sales
+new_data <- data.frame(Spend=100)
+predict(model, new_data)
+
+
+Sample Output
+Call:
+lm(Sales ~ Spend, data = data)
+Coefficients:
+(Intercept)       Spend
+     5.20          0.05
