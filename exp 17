@@ -1,0 +1,25 @@
+# Load Titanic data
+data(Titanic)
+# Convert to data frame
+titanic <- as.data.frame(Titanic)
+# Survival vs Class
+barplot(
+  xtabs(Freq ~ Class + Survived, data=titanic),
+  beside=TRUE,
+  legend=TRUE,
+  main="Survival vs Class"
+)
+# Survival vs Class by Gender
+barplot(
+  xtabs(Freq ~ Class + Survived + Sex, data=titanic),
+  beside=TRUE,
+  legend=TRUE,
+  main="Survival by Class and Gender"
+)
+
+Sample Result
+Class        Survived
+1st          Yes / No
+2nd          Yes / No
+3rd          Yes / No
+Crew         Yes / No
