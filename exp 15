@@ -1,0 +1,49 @@
+# Load iris dataset
+data(iris)
+# 1. Dimensions
+dim(iris)
+# 2. Summary
+summary(iris)
+# 3. Standard deviation
+sd(iris$Sepal.Length)
+# 4. Quantiles
+quantile(iris$Sepal.Length)
+# 5. Group by Species
+aggregate(Sepal.Length ~ Species, iris, mean)
+# 6. Pivot table
+table(iris$Species)
+# 7. Create Sepal.Length categories
+iris$Sepal_Category <- cut(
+  iris$Sepal.Length,
+  breaks = c(4, 5, 6, 7, 8),
+  labels = c("Low", "Medium", "High", "Very High")
+)
+# Display categories
+table(iris$Sepal_Category)
+
+
+Sample Results
+
+Dimensions
+[1] 150   5
+
+Standard deviation
+[1] 0.8280661
+
+Quantiles
+  0%  25%  50%  75% 100%
+ 4.3  5.1  5.8  6.4  7.9
+
+Mean Sepal Length by Species
+     Species Sepal.Length
+1     setosa       5.006
+2 versicolor       5.936
+3  virginica       6.588
+
+Species count
+    setosa versicolor  virginica
+        50         50         50
+
+Sepal Length Categories
+Low       Medium      High   Very High
+32           87         29          2
