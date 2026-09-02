@@ -1,0 +1,22 @@
+# Install once if needed
+# install.packages("reshape2")
+library(reshape2)
+# Load dataset
+data(airquality)
+# Melt the data
+m <- melt(airquality, id.vars = "Month")
+print(head(m))
+# Cast and calculate monthly average
+result <- dcast(m, Month ~ variable, mean, na.rm = TRUE)
+print(result)
+
+
+
+
+Sample Output
+  Month    Ozone  Solar.R     Wind     Temp
+1     5  24.1250 181.2963 11.62258 65.54839
+2     6  29.4444 190.1667 10.26667 79.10000
+3     7  59.1154 216.4839  8.94194 83.90323
+4     8  59.9615 171.8571  8.79355 83.96774
+5     9  31.4483 167.4333 10.18000 76.90000
