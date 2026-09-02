@@ -1,0 +1,28 @@
+# Load data
+data(ChickWeight)
+# Convert Diet to factor
+ChickWeight$Diet <- factor(ChickWeight$Diet)
+# Create model
+model <- lm(weight ~ Time + Diet,
+            data=ChickWeight)
+# Model result
+summary(model)
+# Predict weight
+pred <- predict(model)
+# Calculate error
+error <- ChickWeight$weight - pred
+# Mean Squared Error
+mse <- mean(error^2)
+print(mse)
+
+
+
+Sample Output
+Coefficients:
+(Intercept)     30.00
+Time             8.00
+Diet2            10.00
+Diet3            15.00
+Diet4            20.00
+Mean Squared Error:
+320.5
